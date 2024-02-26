@@ -49,13 +49,20 @@ background-color: black;
 }
 
 #about{
- background-color: black;
+margin-top: 50px;
+ border: 1px solid white;
+ border-radius: 3px;
+ padding: 10px;
 
 }
-#contact{
+/* #contact{
     background-color: black;
-}
+} */
 
 input{
     border-radius: 3px;
 }
+
+
+
+

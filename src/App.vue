@@ -1,44 +1,29 @@
-<template>
+<template class="container-fluid">
   <NavBar/>
   <main class="container-fluid">
     <router-view/>
   </main>
+  <FooterComp></FooterComp>
 </template>
 
 
 <script>
 import NavBar from './components/NavBar.vue';
+import FooterComp from './components/FooterComp.vue';
 
 
 export default{
   components: {
-    NavBar
+    NavBar,
+    FooterComp
 
   }
  }
 </script>
 
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<style src="./assets/css/style.css">
 
-nav {
-  padding: 30px;
-}
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
-}
 
-nav a.router-link-exact-active {
-font-weight: bold;
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid vh-100">
+    <div class="container-fluid vh-100" style="background-color: black;">
         <h2 class="fs-1 fw-bold d-block d-md-flex justify-content-center">
     Contact Us
   </h2>
@@ -39,10 +39,10 @@
       <br /><br />
 
       <!-- details -->
-      <div class="col my-4 d-block" id="details" style="padding-top: 80px">
-        <div class="row" id="detail">
+      <div class="col d-block">
+        <div class="row d-flex">
           <div>
-            <a href="mailto:inganathistemela13@gmail.com?">
+            <a href="mailto:inganathistemela13@gmail.com?" style="position: relative; right: 131px; top: 25px;">
               <svg
                 width="28"
                 height="25"
@@ -68,11 +68,11 @@
               </svg>
             </a>
           </div>
-          <p>inganathistemela13@gmail.com</p>
+          <p> inganathistemela13@gmail.com</p>
         </div>
-        <div class="row" id="detail">
+        <div class="row d-flex">
           <div>
-            <a href="tel:+27-68-227-2351">
+            <a href="tel:+27-68-227-2351" style="position: relative; right: 131px; top: 25px;">
               <svg
                 width="25"
                 height="27"
@@ -89,10 +89,10 @@
           </div>
           <p>+27 68 227 2351</p>
         </div>
-        <div class="row" id="detail">
+        <div class="row d-flex">
           <div>
             <a
-              href="https://www.google.com/maps/d/u/0/viewer?mid=1lhs71HbZ6S6cAR6VQVrpW2dolhw&ll=-33.98215743335129%2C18.38364600000002&z=12"
+              href="https://www.google.com/maps/d/u/0/viewer?mid=1lhs71HbZ6S6cAR6VQVrpW2dolhw&ll=-33.98215743335129%2C18.38364600000002&z=12" style="position: relative; right: 131px; top: 25px;"
             >
               <svg
                 width="26"
@@ -118,12 +118,13 @@
           <p>Cape Town, South Africa</p>
         </div>
       </div>
-
+      <br><br>
       <br /><br />
     </div>
   </div>
 
-    </div>
+  </div>
+  <br><br>
 </template>
 
 <script>

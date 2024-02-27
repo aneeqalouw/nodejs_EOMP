@@ -27,13 +27,13 @@
 
 import express from 'express';
 import usersController from '../controller/users.js';
+import middleware from '../middleware/userAuthenticate.js';
 
 const router = express.Router();
 
 router.get('/', usersController.getManyUsers);
 router.post('/', usersController.addUser);
-router.put('/:userID', usersController.editUser);
-
+router.put('/userID', usersController.editUser);
 
 export default router;
 

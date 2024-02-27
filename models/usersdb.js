@@ -43,7 +43,7 @@
 import { connection as db } from '../config/config.js';
 import {hash, compare} from 'bcrypt'
 import { createToken } from '../middleware/userAuthenticate.js';
-class users{
+class Users{
     fetchUsers(req, res){
         const qry = `
             SELECT firstName, lastName, age, email, password
@@ -123,7 +123,7 @@ class users{
             }
         })
     }
-    async deleteUser(req, res){
+    deleteUser(req, res){
         const qry = `
             DELETE FROM users
             WHERE userID = ${req.params.id}
@@ -180,7 +180,7 @@ class users{
     }
 }
 export{
-    users
+    Users
 }
   
 

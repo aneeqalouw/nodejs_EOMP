@@ -13,9 +13,7 @@ function createToken(user){
     process.env.SECRET_KEY,
     {
         expiresIn: '1h'
-    }
-    )
-
+    })
 }
 
 function verifyToken(req, res, next){

@@ -62,14 +62,14 @@
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import { products } from '../models/productsdb.js';
+import { products } from '../models/index.js';
 // import cookieParser from 'cookie-parser';
 
-const productRouter = express.Router()
+const productsRouter = express.Router()
 
-productRouter.get('/', (req, res)=>{
+productsRouter.get('/', (req, res)=>{
     try{
-        products.fetchProducts(req, res)
+      products.fetchProducts(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -77,9 +77,9 @@ productRouter.get('/', (req, res)=>{
         })
     }
 })
-productRouter.get('/:id', (req, res)=>{
+productsRouter.get('/:id', (req, res)=>{
     try{
-        products.fetchProduct(req, res)
+      products.fetchProduct(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -88,9 +88,9 @@ productRouter.get('/:id', (req, res)=>{
     }
 })
 
-productRouter.post('/addProduct', bodyParser.json(), (req, res)=>{
+productsRouter.post('/addProduct', bodyParser.json(), (req, res)=>{
     try{
-        products.addProduct(req, res)
+      products.addProduct(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -99,9 +99,9 @@ productRouter.post('/addProduct', bodyParser.json(), (req, res)=>{
     }
 })
 
-productRouter.patch('/updateProduct/:id', bodyParser.json(), (req, res)=>{
+productsRouter.patch('/updateProduct/:id', bodyParser.json(), (req, res)=>{
     try{
-        products.updateProduct(req, res)
+      products.updateProduct(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -111,5 +111,5 @@ productRouter.patch('/updateProduct/:id', bodyParser.json(), (req, res)=>{
 })
 
 export{
-    productRouter
+    productsRouter
 }

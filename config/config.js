@@ -13,9 +13,10 @@
 // export { pool };
 
 import { createPool } from 'mysql';
-import { config } from 'dotenv';
+// import { config } from 'dotenv';
 
-config()
+// config()
+import 'dotenv/config'
 
 const connection = createPool({
     host: process.env.DB_host,

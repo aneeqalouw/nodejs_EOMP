@@ -125,7 +125,7 @@
 
 import bodyParser from 'body-parser';
 import { verifyToken } from '../middleware/userAuthenticate.js';
-import { users } from '../models/usersdb.js';
+import { users } from '../models/index.js';
 import express from 'express'
 
 
@@ -134,7 +134,7 @@ const usersRouter = express.Router()
 
 usersRouter.get('/', (req, res)=>{
     try{
-        users.fetchUsers(req, res)
+      users.fetchUsers(req, res)
     }catch(e){
         res.json({
             status: res.statusCode,
@@ -143,17 +143,17 @@ usersRouter.get('/', (req, res)=>{
     }
 })
 
-usersRouter.get('/:id', (req, res)=>{
-    try{
-        users.fetchUser(req, res)
-    }catch(e){
-        res.json({
-            status: res.statusCode,
-            msg: 'Failed to retrieve user'
-        })
-    }
+// usersRouter.get('/:id', (req, res)=>{
+//     try{
+//         users.fetchUser(req, res)
+//     }catch(e){
+//         res.json({
+//             status: res.statusCode,
+//             msg: 'Failed to retrieve user'
+//         })
+//     }
 
-})
+// })
 
 usersRouter.post('/register', bodyParser.json(), (req, res)=>{
     try{
@@ -166,7 +166,7 @@ usersRouter.post('/register', bodyParser.json(), (req, res)=>{
     }
 })
 
-usersRouter.patch('/updateUser/:id', bodyParser.json(), (req, res)=>{
+usersRouter.patch('/update/:id', bodyParser.json(), (req, res)=>{
     try{
         users.updateUser(req, res)
     }catch(e){
@@ -177,7 +177,7 @@ usersRouter.patch('/updateUser/:id', bodyParser.json(), (req, res)=>{
     }
 })
 
-usersRouter.delete('/deleteUser/:id', (req, res)=>{
+usersRouter.delete('/delete/:id', (req, res)=>{
     try{
         users.deleteUser(req, res)
     }catch(e){

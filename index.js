@@ -24,7 +24,7 @@
 
 
 import {usersRouter, express} from './controller/users.js';
-import {productRouter} from './controller/shop.js'
+import {productsRouter} from './controller/shop.js'
 // import {usersRouter} from './controller/users.js'
 // import { config } from 'dotenv'
 import cookieparser from 'cookie-parser'
@@ -61,13 +61,15 @@ app.get('^/$|/altitudeapparel', (req, res)=>{
     res.statusCode(200).sendFile(path.join(__dirname, './static/index.html'))
 })
 
+
 app.use('/users', usersRouter)
-app.use('/shop', productRouter)
+app.use('/shop', productsRouter)
 app.use(errHandling)
 
 app.listen(port, ()=>{
     console.log(`Server is running on port number: ${port}`);
 })
+
 
 
 

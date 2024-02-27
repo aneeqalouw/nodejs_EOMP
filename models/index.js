@@ -1,9 +1,9 @@
-import { users } from '../models/usersdb.js';
-import { products } from '../models/productsdb.js';
-import cookieparser from 'cookie-parser';
+import { Users } from '../models/usersdb.js';
+import { Products } from '../models/productsdb.js';
+// import cookieparser from 'cookie-parser';
 
-let users = new users()
-let products = new products()
+let users = new Users()
+let products = new Products()
 
 export{
     users,

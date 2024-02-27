@@ -48,7 +48,7 @@
 // export { getProducts, postProduct, deleteProduct, updateProduct};
 
 import { connection as db } from '../config/config.js';
-class products{
+class Products{
     fetchProducts(req, res){
         const qry = `
             SELECT prodID, prodName, category, price, image, description
@@ -62,13 +62,14 @@ class products{
             })
         })
     }
+
     fetchProduct(req, res){
         const qry = `
         SELECT prodID, prodName, category, price, image, description
         FROM products
         WHERE prodID = ${req.params.id};
     `
-    db.query(qry,[req.body], (err, result)=>{
+    db.query(qry, (err, result)=>{
         if(err) throw err
         res.json({
             status: res.statusCode,
@@ -76,6 +77,7 @@ class products{
         })
     })
     }
+    
     addProduct(req, res){
         const qry = `
             INSERT INTO products
@@ -91,49 +93,36 @@ class products{
 
     }
     updateProduct(req, res){
-        let data = req.body
+    
         const qry = `
             UPDATE products
             SET ?
             WHERE prodID = ${req.params.id};
         `
-        db.query(qry, [data], (err)=>{
-            if(err){
-                res.json({
+        db.query(qry, [req.body], (err)=>{
+            if(err) throw err
+            res.json({
                     status: res.statusCode,
-                    msg: "Failed to update"
+                    msg: "The information has been updated."
                 })
-            }else{
-                res.json({
-                    status: res.statusCode,
-                    msg: 'Successfully updated'
-                })
-            }
-        })
-    }
+            })
+        }
     deleteProduct(req, res){
-        let data = req.body
         const qry = `
             DELETE FROM products
             WHERE prodID = ${req.params.id}
         `
-        db.query(qry, [data], (err)=>{
-            if (err){
-                res.json({
-                    status: res.statusCode,
-                    msg: 'Failed to delete'
-                })
-            }else{
+        db.query(qry, (err)=>{
+            if (err) throw err 
                 res.json({
                     status: res.statusCode,
                     msg: 'Successfully deleted'
                 })
-            }
-        })
+            })
+        }
     }
-}
 
 export {
-    products
+    Products
 }
 

@@ -67,7 +67,7 @@ class users{
             if(err) throw err
             res.json({
                 status: res.statusCode,
-                result
+                result: result[0]
             })
         })
     }
@@ -88,6 +88,7 @@ class users{
                     status: res.statusCode,
                     msg: 'Email address already in use'
                 })
+                console.log(err);
             }else{
                 let token = createToken(user)
                 res.json({

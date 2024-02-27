@@ -175,7 +175,7 @@ export default createStore({
     async fetchProducts(context) {
       try{
         let {results} = 
-        (await axios.get(`${dbURL}products`)).data
+        (await axios.get(`${dbURL}shop`)).data
         if(results) {
           context.commit('setProducts', results)
         }
@@ -190,7 +190,7 @@ export default createStore({
     },
     async fetchProduct(context, payload) {
       try{
-        let {result} = (await axios.get(`${dbURL}products/${payload.id}`)).data
+        let {result} = (await axios.get(`${dbURL}product/${payload.id}`)).data
         if(result) {
           context.commit('setProduct', result)
         }else {

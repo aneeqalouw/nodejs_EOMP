@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="row">
-      <table class="table table-bordered">
+      <table class="table-bordered bg-transparent border-light text-white">
         <thead>
           <tr>
             <th>User ID</th>
@@ -67,11 +67,13 @@
     </div>
     <div class="row">
       <div class="col">
-        <button class="btn btn-dark bg-transparent w-25 my-2">Add</button>
+        <button class="btn btn-dark bg-transparent w-25 my-2" data-bs-toggle="modal"
+          data-bs-target="#addProductModelTarget">Add</button>
+        <AddProduct :product="product" addProductModel="addProductModelTarget" />
       </div>
     </div>
     <div class="row">
-      <table class="table table-bordered">
+      <table class="table-bordered bg-transparent border-light text-white">
         <thead>
           <tr>
             <th>Product ID</th>
@@ -136,9 +138,11 @@
 
 <script>
 import AddUser from "@/components/AddUser.vue";
+import AddProduct from "@/components/AddProduct.vue";
 export default {
   components: {
     AddUser,
+    AddProduct
   },
   data() {
     return {

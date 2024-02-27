@@ -5,7 +5,7 @@ import { useCookies } from 'vue3-cookies'
 const {cookies} = useCookies()
 import router from '@/router'
 import AuthenticateUser from '@/service/AuthenticateUser'
-const dbURL = 'https://nodejs-eomp-gi0u.onrender.com/'
+const dbURL = 'https://nodejs-eomp-1.onrender.com/'
 
 
 
@@ -36,7 +36,7 @@ export default createStore({
   actions: {
     async register(context, payload) {
       try{
-        let {msg} = (await axios.post(`${lifeURL}users/register`, payload)).data
+        let {msg} = (await axios.post(`${dbURL}users/register`, payload)).data
         if(msg) {
           context.dispatch('setUsers')
           sweet({
@@ -59,7 +59,7 @@ export default createStore({
     },
     async fetchUsers(context) {
       try{
-        let {results} = (await axios.get(`${lifeURL}users`)).data
+        let {results} = (await axios.get(`${dbURL}users`)).data
         if(results) {
           context.commit('setUsers', results)
         }
@@ -74,7 +74,7 @@ export default createStore({
     },
     async fetchUser(context, payload) {
       try{
-        let {result} = (await axios.get(`${lifeURL}users/${payload.id}`)).data
+        let {result} = (await axios.get(`${dbURL}users/${payload.id}`)).data
         if(result) {
           context.commit('setUser', result)
         }else {

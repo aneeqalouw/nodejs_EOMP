@@ -25,12 +25,17 @@ nav a{
     text-decoration: none;
     color: rgb(253, 251, 251);
 }
+nav a:hover{
+    text-decoration: none;
+    color: #F68EF4;
+}
 #buttons{
     text-decoration: none;
     color: white;
 }
 nav a.router-link-exact-active {
     font-weight: bold;
+    color: #F68EF4;
 }
 
 #home{
@@ -65,7 +70,7 @@ input{
 }
 
 ::-webkit-input-placeholder {   
-     color: rgb(0, 0, 0) !important;  
+     color: rgb(245, 242, 242) !important;  
 }
 
 #line{

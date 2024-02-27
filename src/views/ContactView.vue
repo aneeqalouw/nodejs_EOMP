@@ -16,6 +16,7 @@
                 placeholder="First name"
                 required
                 name="name"
+                class="bg-transparent"
               />
             </div>
             <br /><br />
@@ -25,6 +26,7 @@
                 placeholder="Email address"
                 required
                 name="email"
+                class="bg-transparent"
               />
             </div>
             <br /><br />
@@ -35,6 +37,7 @@
                 placeholder="Your message"
                 required
                 name="message"
+                class="bg-transparent border-dark"
               ></textarea>
               <button class="btn btn-dark my-3">Get in touch</button>
             </div>

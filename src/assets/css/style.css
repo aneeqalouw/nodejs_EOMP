@@ -53,6 +53,7 @@ margin-top: 50px;
  border: 1px solid white;
  border-radius: 3px;
  padding: 10px;
+ /* height: 680px; */
 
 }
 /* #contact{
@@ -63,6 +64,20 @@ input{
     border-radius: 3px;
 }
 
+::-webkit-input-placeholder {   
+     color: rgb(0, 0, 0) !important;  
+}
 
+#line{
+    width: 500px;
+    height: 2px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+#sicon{
+    width: 100px;
+    height: 100px;
+}
 
 

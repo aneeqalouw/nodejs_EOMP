@@ -63,7 +63,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import { products } from '../models/productsdb.js';
-import cookieParser from 'cookie-parser';
+// import cookieParser from 'cookie-parser';
 
 const productRouter = express.Router()
 

@@ -12,4 +12,6 @@ router.put('/:prodID', shopController.editProduct);
 router.delete('/:prodID', shopController.deleteItem);
 
 
-export default router;
+export{
+    router
+} 

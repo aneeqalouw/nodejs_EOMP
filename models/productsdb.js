@@ -76,7 +76,7 @@ class products{
         })
     })
     }
-    async addProduct(req, res){
+    addProduct(req, res){
         const qry = `
             INSERT INTO products
             SET ?;
@@ -90,7 +90,7 @@ class products{
         })
 
     }
-    async updateProduct(req, res){
+    updateProduct(req, res){
         let data = req.body
         const qry = `
             UPDATE products
@@ -111,7 +111,7 @@ class products{
             }
         })
     }
-    async deleteProduct(req, res){
+    deleteProduct(req, res){
         let data = req.body
         const qry = `
             DELETE FROM products

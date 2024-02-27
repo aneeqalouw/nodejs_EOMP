@@ -23,20 +23,20 @@
 // });
 
 
-import express from 'express';
+import {usersRouter, express} from './controller/users.js';
 import {productRouter} from './controller/shop.js'
-import {usersRouter} from './controller/users.js'
-import { config } from 'dotenv'
+// import {usersRouter} from './controller/users.js'
+// import { config } from 'dotenv'
 import cookieparser from 'cookie-parser'
 import {errHandling} from './middleware/errorhandling.js'
 import cors from 'cors'
 import path from 'path'
 
-config();
+// config();
 
 
 const app = express()
-const port = +process.env.PORT || 6500
+const port = +process.env.PORT || 3500
 
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*"); 
@@ -57,7 +57,7 @@ app.use(
     cors()
 )
 
-app.get('^/$|/exampleApp', (req, res)=>{
+app.get('^/$|/altitudeapparel', (req, res)=>{
     res.statusCode(200).sendFile(path.join(__dirname, './static/index.html'))
 })
 

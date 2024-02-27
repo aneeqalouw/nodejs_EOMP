@@ -12,16 +12,16 @@
 
 // export { pool };
 
-import { createPool } from 'mysql2';
+import { createPool } from 'mysql';
 import { config } from 'dotenv';
 
 config()
 
 const connection = createPool({
-    DB_host: process.env.DB_host,
-    DB_database: process.env.DB_database,
-    DB_user: process.env.DB_user,
-    DB_password: process.env.DB_password,
+    host: process.env.DB_host,
+    database: process.env.DB_database,
+    user: process.env.DB_user,
+    password: process.env.DB_password,
     multipleStatements: true,
     connectionLimit: 30
 })

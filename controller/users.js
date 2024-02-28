@@ -143,17 +143,6 @@ usersRouter.get('/', (req, res)=>{
     }
 })
 
-// usersRouter.get('/:id', (req, res)=>{
-//     try{
-//         users.fetchUser(req, res)
-//     }catch(e){
-//         res.json({
-//             status: res.statusCode,
-//             msg: 'Failed to retrieve user'
-//         })
-//     }
-
-// })
 
 usersRouter.post('/register', bodyParser.json(), (req, res)=>{
     try{
@@ -197,6 +186,17 @@ usersRouter.post('/login', bodyParser.json(), (req, res)=>{
             msg: 'There was an error logging in'
         })
     }
+})
+
+usersRouter.post('/add', bodyParser.json(), (req, res)=>{
+  try{
+      users.addUser(req, res)
+  }catch(e){
+      res.json({
+          status: res.statusCode,
+          msg: 'There was an error adding user'
+      })
+  }
 })
 
 export {

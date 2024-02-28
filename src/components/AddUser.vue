@@ -7,10 +7,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body bg-dark">
-            <div @submit.prevent="register">
-                <div>
-                <input type="text" placeholder="userID" v-model="payload.userID" class="bg-transparent border-dark">
-            </div>
+            <div >
             <br><br>
             <div>
                 <input type="text" placeholder="Name" v-model="payload.firstName" class="bg-transparent border-dark">
@@ -21,11 +18,7 @@
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Age" v-model="payload.userAge" class="bg-transparent border-dark">
-            </div>
-            <br><br>
-            <div>
-                <input type="text" placeholder="Sex" v-model="payload.sex" class="bg-transparent border-dark">
+                <input type="text" placeholder="Age" v-model="payload.age" class="bg-transparent border-dark">
             </div>
             <br><br>
             <div>
@@ -33,17 +26,17 @@
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Email" v-model="payload.emailAdd" class="bg-transparent border-dark">
+                <input type="text" placeholder="Email" v-model="payload.email" class="bg-transparent border-dark">
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Password" v-model="payload.userPwd" class="bg-transparent border-dark">
+                <input type="password" placeholder="Password" v-model="payload.password" class="bg-transparent border-dark">
             </div>
             <br><br>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-transparent border-light text-white" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-light">Save changes</button>
+            <button type="submit" @click.prevent="register" class="btn btn-light">Save changes</button>
           </div>
         </div>        
         </div>
@@ -52,27 +45,24 @@
     </template>
     
     <script>
-import { register } from 'register-service-worker';
-
         export default {
            props:['addUserModel'],
             data(){
                 return{
                     payload: {
-                        userID: '',
                         firstName: '',
                         lastName: '',
                         userRole: '',
-                        sex: '',
-                        userAge: '',
-                        emailAdd: '',
-                        userPwd: '',
+                        age: null,
+                        email: '',
+                        password: '',
                     }
                 }
             },
             methods: {
                 register(){
                     this.$store.dispatch('register', this.payload)
+                    alert(JSON.stringify(this.payload))
                 }
             }
         }

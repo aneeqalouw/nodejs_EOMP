@@ -3,10 +3,10 @@
     <div class="row ">
       <div class="col container-fluid">
         <div class="vh-100 d-flex justify-content-center align-items-center">
-        <h1 class="fs-1">Welcome to <span id="aa">Altitude Apparel!</span> <br>
-        <h3 class="fs-2">All your aerial fitness clothing in one place</h3>
+        <h1 class="display-2">Welcome to <span id="aa">Altitude Apparel!</span> <br>
+        <h3 class="display-4">All your aerial fitness clothing in one place</h3>
         <button class="btn btn-dark" style="width: 10rem;">
-          <router-link to="/shop" id="buttons">Shop now!</router-link>
+          <router-link to="/products" id="buttons">Shop now!</router-link>
         </button>
       </h1> 
     </div>  

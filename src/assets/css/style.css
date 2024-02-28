@@ -70,8 +70,12 @@ margin-top: 50px;
 
 input{
     border-radius: 3px;
+    color: white;
 }
-
+textarea{
+    border-radius: 3px;
+    color: white;
+}
 ::-webkit-input-placeholder {   
      color: rgb(245, 242, 242) !important;  
 }
@@ -88,4 +92,6 @@ input{
     height: 100px;
 }
 
-
+#sorticon :hover{
+    color: black;
+}

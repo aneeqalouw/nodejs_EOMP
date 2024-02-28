@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" >
             <slot name="cardHeader"></slot>
         </div>
         <div class="card-body">
@@ -20,7 +20,9 @@
 
 <style scoped>
 .card {
-        width: 18rem;
-        margin: .5rem;
+        width: 23rem;
+        height: 28rem;
+        /* margin: 30px; */
+        
     }
 </style>

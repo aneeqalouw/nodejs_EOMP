@@ -26,12 +26,17 @@ nav a{
     text-decoration: none;
     color: rgb(253, 251, 251);
 }
+nav a:hover{
+    text-decoration: none;
+    color: #F68EF4;
+}
 #buttons{
     text-decoration: none;
     color: white;
 }
 nav a.router-link-exact-active {
     font-weight: bold;
+    color: #F68EF4;
 }
 
 #home{
@@ -52,12 +57,35 @@ background-color: black;
 #about{
  border: 1px solid white;
  border-radius: 3px;
+margin-top: 50px;
+ border: 1px solid white;
+ border-radius: 3px;
+ padding: 10px;
+ /* height: 680px; */
 
 }
-#contact{
+/* #contact{
     background-color: black;
-}
+} */
 
 input{
     border-radius: 3px;
 }
+
+::-webkit-input-placeholder {   
+     color: rgb(245, 242, 242) !important;  
+}
+
+#line{
+    width: 500px;
+    height: 2px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+#sicon{
+    width: 100px;
+    height: 100px;
+}
+
+

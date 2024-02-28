@@ -110,7 +110,7 @@ class Products{
     deleteProduct(req, res){
         const qry = `
             DELETE FROM products
-            WHERE prodID = '${req.params.id}';
+            WHERE prodID = ${req.params.id};
         `
         db.query(qry, (err)=>{
             if (err) throw err 

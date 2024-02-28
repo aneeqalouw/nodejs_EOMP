@@ -1,45 +1,3 @@
-// import { pool } from '../config/config.js';
-
-// const getUsers = async () => {
-//   try {
-//     const [rows] = await pool.query('SELECT * FROM users');
-//     return rows;
-//   } catch (error) {
-//     throw new Error(`Error fetching products: ${error.message}`);
-//   }
-// };
-
-// const postUsers = async (firstName, lastName, age, email, password) => {
-//   try {
-//     await pool.query('INSERT INTO users (firstName, lastName, age, email, password) VALUES (?, ?, ?, ?, ?)', [firstName, lastName, age, email, password]);
-//     return { success: true };
-//   } catch (error) {
-//     throw new Error(`Error adding users: ${error.message}`);
-//   }
-// };
-
-// const deleteUsers = async (userID) => {
-//   try {
-//     await pool.query('DELETE FROM users WHERE userID = ?', [userID]);
-//     return { success: true };
-//   } catch (error) {
-//     throw new Error(`Error deleting users: ${error.message}`);
-//   }
-// };
-
-// const updateUsers = async (firstName, lastName, age, email, password) => {
-//   try {
-//     await pool.query('UPDATE users SET userID = ?, firstName = ?, lastName = ?, age = ?, email = ?, password = ? WHERE userID = ?', [firstName, lastName, age, email, password]);
-//     return { success: true };
-//   } catch (error) {
-//     throw new Error(`Error updating users: ${error.message}`);
-//   }
-// };
-
-
-// export { getUsers, postUsers, deleteUsers, updateUsers };
-
-
 import { connection as db } from '../config/config.js';
 import {hash, compare} from 'bcrypt'
 import { createToken } from '../middleware/userAuthenticate.js';
@@ -178,36 +136,6 @@ class Users{
             }
         })
     }
-    // addUser(req, res){
-    //     const { firstName, lastName, age, email, password } = req.body;
-    //     const checkEmail = `
-    //         SELECT email FROM users WHERE email = ?;
-    //     `;
-    //     db.query(checkEmail, [email], async (err, existingUser) => {
-    //         if (err) {
-    //             return res.status(500).json({ error: 'Internal server error' });
-    //         }
-    //         if (existingUser.length > 0) {
-    //             return res.status(400).json({ error: 'Email address already in use' });
-    //         }
-    //         const insertUser = `
-    //             INSERT INTO users (firstName, lastName, age, email, password)
-    //             VALUES (?, ?, ?, ?, ?);
-    //         `;
-    //         try {
-    //             const hashedPassword = await hash(password, 10);
-    //             db.query(insertUser, [firstName, lastName, age, email, hashedPassword], (err, result) => {
-    //                 if (err) {
-    //                     return res.status(500).json({ error: 'Failed to add user' });
-    //                 }
-    //                 res.status(201).json({ message: 'User added successfully' });
-    //             });
-    //         } catch (error) {
-    //             console.error('Error hashing password:', error);
-    //             res.status(500).json({ error: 'Internal server error' });
-    //         }
-    //     });
-    // }
     
 }
 

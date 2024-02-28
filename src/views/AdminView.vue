@@ -168,6 +168,7 @@ export default {
     addUser() {
       //
     },
+
   },
   mounted() {
     this.$store.dispatch("fetchUsers");

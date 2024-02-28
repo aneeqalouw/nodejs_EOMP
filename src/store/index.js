@@ -175,9 +175,9 @@ export default createStore({
     async fetchProducts(context) {
       try{
         let {results} = 
-        (await axios.get(`${dbURL}shop`)).data
+        (await axios.get(`${dbURL}products`)).data
         if(results) {
-          context.commit('setProducts', results)
+          context.commit('setProducts', data)
         }
       }catch(e) {
         sweet({

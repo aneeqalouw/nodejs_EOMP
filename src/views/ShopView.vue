@@ -1,15 +1,27 @@
 <template>
-  <div class="container-fluid vh-100 my-3" style="background-color: black">
+  <div class="container-fluid my-3" style="background-color: black">
+    <h2 class="fs-1">Shop All</h2>
     <div class="row">
       <div class="input-group">
-        <input type="text" class="form-control bg-transparent"
-        placeholder="Search..." aria-label="Recipient's username with two button
-        addons"/>
-        <button class="btn btn-outline-light d-flex gap-4" type="button">
+        <input
+          type="text"
+          class="form-control bg-transparent text-white"
+          placeholder="Search..."
+          aria-label="Recipient's username with two button
+        addons"
+          @keyup="search"
+          id="searchInput"
+        />
+        <button
+          class="btn btn-outline-light d-flex gap-4"
+          type="button"
+          @click="sorting"
+        >
           Sort by price
           <!-- icon -->
           <div>
             <svg
+              id="sortIcon"
               width="20"
               height="20"
               viewBox="0 0 20 20"
@@ -29,21 +41,31 @@
       </div>
     </div>
     <br /><br />
-    <div class="row" v-if="products" id="productContainer">
-      <Card v-for="product in products" :key="product.prodID">
+    <div
+      class="row d-block d-md-flex gap-4 justify-content-center"
+      v-if="products"
+      id="productContainer"
+    >
+      <Card v-for="product in products" :key="product.prodID" class="my-2">
         <template #cardHeader>
           <h4 class="card-title">{{ product.prodName }}</h4>
         </template>
         <template #cardBody>
-          <img :src="product.image" :alt="product.prodName" />
+          <img
+            :src="product.image"
+            :alt="product.prodName"
+            style="width: 200px; height: 200px"
+          />
         </template>
         <template #cardFooter>
           <p class="card-text lead">R{{ product.price }}</p>
-          <router-link :to="{ name: 'product', params: { id: product.prodID } }"
+          <button type="button" class="btn btn-dark">
+            <router-link :to="{ name: 'product', params: { id: product.prodID } }" style="text-decoration: none; color: white;"
             >View Details</router-link
           >
+          </button>
+          
           <br /><br />
-          <i>Size made to order</i>
         </template>
       </Card>
     </div>
@@ -51,54 +73,48 @@
       <SpinnerComp></SpinnerComp>
     </div>
   </div>
+  <br /><br />
 </template>
 
 <script>
-import CardView from "@/components/CardComp.vue";
+import Card from "@/components/CardComp.vue";
 import SpinnerComp from "@/components/SpinnerComp.vue";
+import ProductView from "./ProductView.vue";
 export default {
   name: "ProductsView",
   components: {
-    CardView,
+    Card,
     SpinnerComp,
+    ProductView,
   },
   computed: {
     products() {
       return this.$store.state.products;
     },
     sorting() {
-      let sorted = products.sort((e1, e2) => {
+      let sorted = this.products.sort((e1, e2) => {
         if (e1.price < e2.price) {
           return -1;
         } else if (e1.price > e2.price) {
           return 1;
         } else return 0;
       });
-      productContainer.innerHTML = "";
-      sorted.forEach((sortedProduct) => {
-        productContainer.innerHTML += `
-     <Card v-for="product in products" :key="product.prodID">
-        <template #cardHeader>
-          <h4 class="card-title">{{ product.prodName }}</h4>
-        </template>
-        <template #cardBody>
-          <img src=${sortedProduct.image} alt=${sortedProduct.prodName} />
-        </template>
-        <template #cardFooter>
-          <p class="card-text lead">R${product.price}</p>
-          <router-link to= ${{
-            name: "product",
-            params: { id: sortedProduct.prodID },
-          }} "
-            >View Details</router-link
-          >
-          <br /><br />
-          <i>Size made to order</i>
-        </template>
-      </Card>
-     
-     `;
+    },
+    search() {
+      let searchInput = document.getElementById("searchInput");
+      let productContainer = document.getElementById("productsContainer");
+      let searchItem = this.products.filter((prod) => {
+        return prod.prodName
+          .toLowerCase()
+          .includes(searchInput.value.toLowerCase());
       });
+      if (searchItem) {
+        productContainer.innerHTML = "";
+        searchItem.forEach((item) => {
+          productContainer.innerHTML += item
+          
+        });
+      }
     },
   },
   mounted() {
@@ -107,6 +123,4 @@ export default {
 };
 </script>
 
-<style src="../assets/css/style.css">
-
-</style>
+<style src="../assets/css/style.css"></style>

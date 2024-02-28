@@ -6,7 +6,7 @@
       <SpinnerComp></SpinnerComp> 
     </div>
   </main>
-  <FooterComp></FooterComp>
+  <FooterComp class="container-fluid"></FooterComp>
 </template>
 
 

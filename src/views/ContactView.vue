@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid" style="background-color: black">
-    <h2 class="fs-1 fw-bold d-block d-md-flex justify-content-center">
+    <h2 class="display-3 d-block d-md-flex justify-content-center">
       Contact Us
     </h2>
     <br /><br />
@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row d-block d-md-flex justify-content-center gap-5">
         <div class="col d-block" id="form">
-          <form action="#" method="post">
+          <form action="https://formspree.io/f/mleqnwzl" method="post">
             <div class="row">
               <input
                 type="text"
@@ -55,6 +55,7 @@
               <a
                 href="mailto:inganathistemela13@gmail.com?"
                 style="position: relative; right: 131px; top: 25px"
+                target="_blank"
               >
                 <svg
                   width="28"
@@ -87,6 +88,7 @@
             <div>
               <a
                 href="tel:+27-68-227-2351"
+                target="_blank"
                 style="
                   position: relative;
                   right: 131px;
@@ -114,6 +116,7 @@
             <div>
               <a
                 href="https://www.google.com/maps/d/u/0/viewer?mid=1lhs71HbZ6S6cAR6VQVrpW2dolhw&ll=-33.98215743335129%2C18.38364600000002&z=12"
+                target="_blank"
                 style="
                   position: relative;
                   right: 131px;
@@ -147,14 +150,13 @@
           <br /><br />
           <div class="row d-flex">
             <p class="lead fs-1">Follow us</p>
-            <!-- line -->
-            
-
+           
             <!-- social icons -->
             <div class="row d-flex flex-wrap mx-3">
+               <!-- line -->
               <div class="row" id="line"></div>
               <br><br>
-              <a href="" id="sicon">
+              <a href="https://www.instagram.com/that.malay.chick?igsh=dzk4ZTN5cDdrNHpt" id="sicon" target="_blank">
                 <svg
                   width="50"
                   height="50"
@@ -170,7 +172,7 @@
               </a>
 
               <!-- fb -->
-              <a href="" id="sicon">
+              <a href="https://www.facebook.com/inganathi.stemela/" id="sicon" target="_blank">
                 <svg
                   width="50"
                   height="50"
@@ -186,7 +188,7 @@
               </a>
 
               <!-- X -->
-              <a href="" id="sicon">
+              <a href="https://x.com/aneeqa38459?s=20" id="sicon" target="_blank">
                 <svg
                   width="46"
                   height="48"
@@ -200,12 +202,12 @@
                   />
                 </svg>
               </a>
-              
+              <!-- line -->
               <div class="row" id="line"></div>
             </div>
             
           </div>
-          <!-- line -->
+          
           
         </div>
         <br /><br />

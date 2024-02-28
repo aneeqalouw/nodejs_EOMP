@@ -31,7 +31,7 @@ class Users{
     }
     async createUser(req,res){
         let data = req.body
-        data.password = await hash(data?.userPwd, 8)
+        data.password = await hash(data?.password, 8)
         let user = {
             email: data.email,
             password: data.password

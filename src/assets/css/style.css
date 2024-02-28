@@ -16,6 +16,7 @@
   text-align: center;
   color: white;
   background-color: black;
+  height: 100%;
 }
 #logo{
     width: 170px;
@@ -49,7 +50,8 @@ background-color: black;
 }
 
 #about{
- background-color: black;
+ border: 1px solid white;
+ border-radius: 3px;
 
 }
 #contact{

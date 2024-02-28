@@ -188,16 +188,17 @@ usersRouter.post('/login', bodyParser.json(), (req, res)=>{
     }
 })
 
-usersRouter.post('/add', bodyParser.json(), (req, res)=>{
-  try{
-      users.addUser(req, res)
-  }catch(e){
-      res.json({
-          status: res.statusCode,
-          msg: 'There was an error adding user'
-      })
-  }
-})
+// usersRouter.post('/add', bodyParser.json(), (req, res) => {
+//   try {
+//     usersController.addUser(req, res); 
+//   } catch (e) {
+//     res.json({
+//       status: res.statusCode,
+//       msg: 'There was an error adding user'
+//     });
+//   }
+// });
+
 
 export {
     usersRouter,

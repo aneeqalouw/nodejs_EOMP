@@ -178,36 +178,36 @@ class Users{
             }
         })
     }
-    addUser(req, res){
-        const { firstName, lastName, age, email, password } = req.body;
-        const checkEmail = `
-            SELECT email FROM users WHERE email = ?;
-        `;
-        db.query(checkEmail, [email], async (err, existingUser) => {
-            if (err) {
-                return res.status(500).json({ error: 'Internal server error' });
-            }
-            if (existingUser.length > 0) {
-                return res.status(400).json({ error: 'Email address already in use' });
-            }
-            const insertUser = `
-                INSERT INTO users (firstName, lastName, age, email, password)
-                VALUES (?, ?, ?, ?, ?);
-            `;
-            try {
-                const hashedPassword = await hash(password, 10);
-                db.query(insertUser, [firstName, lastName, age, email, hashedPassword], (err, result) => {
-                    if (err) {
-                        return res.status(500).json({ error: 'Failed to add user' });
-                    }
-                    res.status(201).json({ message: 'User added successfully' });
-                });
-            } catch (error) {
-                console.error('Error hashing password:', error);
-                res.status(500).json({ error: 'Internal server error' });
-            }
-        });
-    }
+    // addUser(req, res){
+    //     const { firstName, lastName, age, email, password } = req.body;
+    //     const checkEmail = `
+    //         SELECT email FROM users WHERE email = ?;
+    //     `;
+    //     db.query(checkEmail, [email], async (err, existingUser) => {
+    //         if (err) {
+    //             return res.status(500).json({ error: 'Internal server error' });
+    //         }
+    //         if (existingUser.length > 0) {
+    //             return res.status(400).json({ error: 'Email address already in use' });
+    //         }
+    //         const insertUser = `
+    //             INSERT INTO users (firstName, lastName, age, email, password)
+    //             VALUES (?, ?, ?, ?, ?);
+    //         `;
+    //         try {
+    //             const hashedPassword = await hash(password, 10);
+    //             db.query(insertUser, [firstName, lastName, age, email, hashedPassword], (err, result) => {
+    //                 if (err) {
+    //                     return res.status(500).json({ error: 'Failed to add user' });
+    //                 }
+    //                 res.status(201).json({ message: 'User added successfully' });
+    //             });
+    //         } catch (error) {
+    //             console.error('Error hashing password:', error);
+    //             res.status(500).json({ error: 'Internal server error' });
+    //         }
+    //     });
+    // }
     
 }
 

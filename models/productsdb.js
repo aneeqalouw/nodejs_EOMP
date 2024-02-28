@@ -67,7 +67,7 @@ class Products{
         const qry = `
         SELECT prodID, prodName, category, price, image, description
         FROM products
-        WHERE prodID = ${req.params.id};
+        WHERE prodID = '${req.params.id}';
     `
     db.query(qry, (err, result)=>{
         if(err) throw err
@@ -77,7 +77,7 @@ class Products{
         })
     })
     }
-    
+
     addProduct(req, res){
         const qry = `
             INSERT INTO products

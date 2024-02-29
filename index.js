@@ -36,6 +36,7 @@ app.get('^/$|/altitudeapparel', (req, res)=>{
 app.use('/users', usersRouter)
 app.use('/shop', productsRouter)
 app.use(errHandling)
+// app.use(bodyParser.json());
 
 app.listen(port, ()=>{
     console.log(`Server is running on port number: ${port}`);

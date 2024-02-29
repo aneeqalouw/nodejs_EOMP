@@ -1,6 +1,6 @@
 import { connection as db } from '../config/config.js';
 class Products{
-    fetchProducts(req, res){
+    fetchProducts(res){
         const qry = `
             SELECT prodID, prodName, category, price, image, description
             FROM products;

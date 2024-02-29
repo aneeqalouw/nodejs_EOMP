@@ -14,7 +14,7 @@
           </div>
           <br><br>
           <div>
-              <input type="text" placeholder="Name" v-model="payload.prodName" class="bg-transparent border-dar text-whitek">
+              <input type="text" placeholder="Name" v-model="payload.prodName" class="bg-transparent border-dar text-white">
           </div>
           <br><br>
           <div>
@@ -27,6 +27,10 @@
           <br><br>
           <div>
               <input type="text" placeholder="Price" v-model="payload.price" class="bg-transparent border-dark text-white">
+          </div>
+          <br><br>
+          <div>
+              <input type="text" placeholder="Description" v-model="payload.description" class="bg-transparent border-dark text-white">
           </div>
           <br><br>
         </div>

@@ -1,10 +1,10 @@
 <template>
-    <div class="container-fluid vh-100" style="background-color: black;">
+    <div class="container vh-100" style="background-color: black;">
         <div class="row">
             <h2 class="display-5">Product Details</h2>
         </div>
         <br><br>
-        <div class="row d-block d-md-flex gap-4 justify-content-center align-items-center" id="single">
+        <div class="row d-block d-md-flex" id="single">
             <div class="row" v-if="product">
                 <div class="col me-auto m-5">
                     <img :src="product.image" :alt="product.prodName" style="width: 20rem; height: 20rem; border-radius: 3px;">
@@ -55,5 +55,8 @@ import SpinnerComp from '@/components/SpinnerComp.vue';
     border: 1px solid white ;
     border-radius: 3px;
     width: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>

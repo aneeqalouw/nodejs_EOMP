@@ -24,6 +24,9 @@
       </div>
       <div class="modal-body bg-black">
         <div>
+          <div>
+            <input type="text" placeholder="ID" v-model="payload.userID" class="bg-transparent border-dark text-white">
+          </div>
             <br /><br />
             <div>
               <input

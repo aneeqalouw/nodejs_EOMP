@@ -119,7 +119,7 @@ export default {
     },
     sortingTnL() {
       if (this.products.category == "tops&leggings") {
-        return this.products;
+        console.log(products);
       }
     },
     sortingLow() {

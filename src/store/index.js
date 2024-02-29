@@ -239,7 +239,7 @@ export default createStore({
     },
     async updateProduct(context, payload) {
       try{
-        let {msg} = await axios.patch(`${dbURL}updateProduct/${payload.id}`)
+        let {msg} = await axios.patch(`${dbURL}shop/updateProduct/${payload.id}`)
         if(msg) {
           context.dispatch('fetchProducts')
           sweet({

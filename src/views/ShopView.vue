@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid my-3" style="background-color: black">
-    <h2 class="fs-1">Shop All</h2>
+    <h2 class="fs-1">Shop</h2>
+    <br><br>
     <div class="row">
       <div class="input-group">
         <input

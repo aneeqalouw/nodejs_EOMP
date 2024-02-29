@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <h2 class="display-4">Users</h2>
     </div>
@@ -15,15 +15,14 @@
         <AddUser addUserModel="addUserModelTarget" />
       </div>
     </div>
-    <div class="row">
-      <table class="table-bordered bg-transparent border-light text-white table-responsive">
+    <div class="row table-responsive">
+      <table class="table-bordered bg-transparent border-light text-white">
         <thead>
           <tr>
             <th>User ID</th>
             <th>First name</th>
             <th>Last name</th>
             <th>Age</th>
-            <th>Sex</th>
             <th>Email address</th>
             <th>User role</th>
             <th>Action</th>
@@ -68,6 +67,9 @@
             </td>
           </tr>
         </tbody>
+        <div class="row" v-else>
+          <SpinnerComp></SpinnerComp>
+        </div>
       </table>
     </div>
     <br /><br />
@@ -82,8 +84,8 @@
         <AddProduct :product="product" addProductModel="addProductModelTarget" />
       </div>
     </div>
-    <div class="row">
-      <table class="table-bordered bg-transparent border-light text-white table-responsive">
+    <div class="row table-responsive">
+      <table class="table-bordered bg-transparent border-light text-white">
         <thead>
           <tr>
             <th>Product ID</th>
@@ -128,6 +130,9 @@
             </td>
           </tr>
         </tbody>
+        <div class="row d-flex justify-content-center" v-else>
+          <SpinnerComp></SpinnerComp>
+        </div>
       </table>
     </div>
     <br><br>
@@ -140,13 +145,15 @@ import AddUser from "@/components/AddUser.vue";
 import AddProduct from "@/components/AddProduct.vue";
 import UpdateUser from "@/components/UpdateUser.vue";
 import UpdateProduct from "@/components/UpdateProduct.vue";
+import SpinnerComp from "@/components/SpinnerComp.vue";
 
 export default {
   components: {
     AddUser,
     AddProduct,
     UpdateUser,
-    UpdateProduct
+    UpdateProduct,
+    SpinnerComp
   },
   computed: {
     users() {

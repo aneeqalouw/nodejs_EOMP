@@ -37,7 +37,7 @@
           ></button>
         </div>
         <div class="modal-body bg-dark">
-          <div @submit.prevent="updateUser">
+          <div >
             <div>
               <input
                 type="text"
@@ -110,7 +110,7 @@
             >
               Close
             </button>
-            <button type="submit" class="btn btn-light">Save changes</button>
+            <button type="submit" @click.prevent="updateUser" class="btn btn-light">Save changes</button>
           </div>
         </div>
       </div>

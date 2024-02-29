@@ -2,14 +2,14 @@
 <div>
 <nav class="navbar navbar-expand-lg border-bottom border-body" data-bs-theme="dark" style="background-color: black;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://i.ibb.co/vv1nfNb/logopink.png" alt="Logo" id="logo">
-    </a>
+      <router-link to="/">
+        <img src="https://i.ibb.co/vv1nfNb/logopink.png" alt="Logo" id="logo">
+      </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ms-auto gap-2">
+      <ul class="navbar-nav ms-auto gap-3">
         <li class="nav-item">
           <router-link to="/">Home</router-link>
         </li>
@@ -17,14 +17,7 @@
           <router-link to="/about">About</router-link>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-top: 0;">
-            Shop
-          </a>
-          <ul class="dropdown-menu">
-            <li><router-link to="/shop">Shop All</router-link></li>
-            <li><router-link to="/unitards">Unitards</router-link></li>
-            <li><router-link to="/topsandleggings">Tops and Leggings</router-link></li>
-          </ul>
+         <router-link to="/shop">Shop</router-link>
         </li>
         <li class="nav-item">
           <router-link to="/contact">Contact us</router-link>

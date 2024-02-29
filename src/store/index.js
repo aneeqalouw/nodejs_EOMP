@@ -178,14 +178,14 @@ export default createStore({
     async fetchProducts(context) {
       try{
         let {results} = 
-        (await axios.get(`${dbURL}products`)).data
+        (await axios.get(`${dbURL}shop`)).data
         if(results) {
-          context.commit('setProducts', data)
+          context.commit('setProducts', results)
         }
       }catch(e) {
         sweet({
           title: 'Error',
-          text: 'Failed to retrieve products.',
+          text: 'Failed to retrieve products',
           icon: "error",
           timer: 2000
         }) 
@@ -215,7 +215,7 @@ export default createStore({
     },
     async addProduct(){
       try{
-        let{result} = (await axios.post(`${dbURL}addproduct`)).data
+        let{result} = (await axios.post(`${dbURL}addProduct`)).data
         if(result){
           context.commit('fetchProducts', result)
         }else{
@@ -259,7 +259,7 @@ export default createStore({
     },
     async deleteProduct(context, payload) {
       try{
-        let {msg} = await axios.delete(`${dbURL}products/${payload.id}`)
+        let {msg} = await axios.delete(`${dbURL}shop/${payload.id}`)
         if(msg) {
           context.dispatch('fetchProducts')
           sweet({

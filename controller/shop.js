@@ -2,7 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import { products } from '../models/index.js';
 
+
 const productsRouter = express.Router()
+
+
+// productsRouter.use(bodyParser.json());
 
 productsRouter.get('/', (req, res)=>{
     try{

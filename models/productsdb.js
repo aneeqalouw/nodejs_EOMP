@@ -1,8 +1,8 @@
 import { connection as db } from '../config/config.js';
 class Products{
-    fetchProducts(res){
+    fetchProducts(req, res){
         const qry = `
-            SELECT prodID, prodName, category, price, image, description
+            SELECT *
             FROM products;
         `
         db.query(qry, (err, results)=>{
@@ -44,7 +44,6 @@ class Products{
 
     }
     updateProduct(req, res){
-    
         const qry = `
             UPDATE products
             SET ?

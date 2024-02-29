@@ -35,7 +35,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>/users</td>
+                <td>/</td>
                 <td>GET</td>
                 <td>Retrieves a list of users.</td>
             </tr>
@@ -45,12 +45,7 @@
                 <td>Creates a new user.</td>
             </tr>
             <tr>
-                <td>/users/:id</td>
-                <td>GET</td>
-                <td>Retrieves details of a specific user.</td>
-            </tr>
-            <tr>
-                <td>/users/:id</td>
+                <td>/update/:id</td>
                 <td>PATCH</td>
                 <td>Updates details of a specific user.</td>
             </tr>
@@ -58,6 +53,11 @@
                 <td>/users/:id</td>
                 <td>DELETE</td>
                 <td>Deletes a specific user.</td>
+            </tr>
+            <tr>
+                <td>/login</td>
+                <td>POST</td>
+                <td>Log a new user in.</td>
             </tr>
         </tbody>
     </table>
@@ -73,27 +73,27 @@
         </thead>
         <tbody>
             <tr>
-                <td>/shop</td>
+                <td>/</td>
                 <td>GET</td>
                 <td>Retrieves a list of shop.</td>
             </tr>
             <tr>
-                <td>/update</td>
-                <td>POST</td>
-                <td>Creates a new product.</td>
-            </tr>
-            <tr>
-                <td>/shop/:id</td>
+                <td>/:id</td>
                 <td>GET</td>
                 <td>Retrieves details of a specific product.</td>
             </tr>
             <tr>
-                <td>/shop/:id</td>
+                <td>/addProduct</td>
+                <td>POST</td>
+                <td>Creates a new product.</td>
+            </tr>
+            <tr>
+                <td>/updateProduct/:id</td>
                 <td>PATCH</td>
                 <td>Updates details of a specific product.</td>
             </tr>
             <tr>
-                <td>/shop/:id</td>
+                <td>/delete/:id</td>
                 <td>DELETE</td>
                 <td>Deletes a specific product.</td>
             </tr>

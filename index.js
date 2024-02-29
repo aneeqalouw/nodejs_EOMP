@@ -19,7 +19,7 @@ app.use((req, res, next)=>{
     next();
 })
 app.use(
-    express.static('./static'),
+    express.static('./public'),
     express.json(),
     express.urlencoded({
         extended: true,

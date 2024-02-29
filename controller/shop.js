@@ -6,8 +6,6 @@ import { products } from '../models/index.js';
 const productsRouter = express.Router()
 
 
-// productsRouter.use(bodyParser.json());
-
 productsRouter.get('/', (req, res)=>{
     try{
       products.fetchProducts(req, res)

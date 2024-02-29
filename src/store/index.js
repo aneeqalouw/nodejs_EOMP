@@ -66,7 +66,7 @@ export default createStore({
       }catch(e) {
         sweet({
           title: 'Error',
-          text: 'An error occurred when retrieving users.',
+          text: 'Failed to retrieve users',
           icon: "error",
           timer: 2000
         }) 
@@ -116,8 +116,9 @@ export default createStore({
       }
     },
     async deleteUser(context, payload) {
+      console.log(payload);
       try{
-        let {msg} = await axios.delete(`${dbURL}users/${payload.id}`)
+        let {msg} = await axios.delete(`${dbURL}users/delete/${payload.id}`)
         if(msg) {
           context.dispatch('fetchUsers')
           sweet({
@@ -130,7 +131,7 @@ export default createStore({
       }catch(e) {
         sweet({
           title: 'Error',
-          text: 'An error occurred when deleting a user.',
+          text: 'Failed to delete',
           icon: "error",
           timer: 2000
         }) 
@@ -215,7 +216,7 @@ export default createStore({
     },
     async addProduct(){
       try{
-        let{result} = (await axios.post(`${dbURL}addProduct`)).data
+        let{result} = (await axios.post(`${dbURL}shop/addProduct`)).data
         if(result){
           context.commit('fetchProducts', result)
         }else{
@@ -259,7 +260,7 @@ export default createStore({
     },
     async deleteProduct(context, payload) {
       try{
-        let {msg} = await axios.delete(`${dbURL}shop/${payload.id}`)
+        let {msg} = await axios.delete(`${dbURL}shop/delete/${payload.id}`)
         if(msg) {
           context.dispatch('fetchProducts')
           sweet({

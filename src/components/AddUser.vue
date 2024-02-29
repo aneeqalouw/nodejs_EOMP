@@ -2,39 +2,39 @@
     <div class="modal fade" :id="addUserModel" tabindex="-1" aria-labelledby="addUser" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header bg-dark">
+          <div class="modal-header bg-black">
             <h1 class="modal-title fs-5" id="addUser">Add user</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body bg-dark">
+          <div class="modal-body bg-black">
             <div >
             <br><br>
             <div>
-                <input type="text" placeholder="Name" v-model="payload.firstName" class="bg-transparent border-dark">
+                <input type="text" placeholder="Name" v-model="payload.firstName" class="bg-transparent border-dark text-white">
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Surname" v-model="payload.lastName" class="bg-transparent border-dark">
+                <input type="text" placeholder="Surname" v-model="payload.lastName" class="bg-transparent border-dark text-white">
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Age" v-model="payload.age" class="bg-transparent border-dark">
+                <input type="text" placeholder="Age" v-model="payload.age" class="bg-transparent border-dark text-white">
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Role" v-model="payload.userRole" class="bg-transparent border-dark">
+                <input type="text" placeholder="Role" v-model="payload.userRole" class="bg-transparent border-dark text-white">
             </div>
             <br><br>
             <div>
-                <input type="text" placeholder="Email" v-model="payload.email" class="bg-transparent border-dark">
+                <input type="text" placeholder="Email" v-model="payload.email" class="bg-transparent border-dark text-white">
             </div>
             <br><br>
             <div>
-                <input type="password" placeholder="Password" v-model="payload.password" class="bg-transparent border-dark">
+                <input type="password" placeholder="Password" v-model="payload.password" class="bg-transparent border-dark text-white">
             </div>
             <br><br>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer bg-black">
             <button type="button" class="btn bg-transparent border-light text-white" data-bs-dismiss="modal">Close</button>
             <button type="submit" @click.prevent="register" class="btn btn-light">Save changes</button>
           </div>

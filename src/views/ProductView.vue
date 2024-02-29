@@ -4,25 +4,21 @@
             <h2 class="display-5">Product Details</h2>
         </div>
         <br><br>
-        <div class="row d-block d-md-flex gap-4 justify-content-center">
-            <Card v-if="product">
-                <template #cardHeader>
-                    <h4 class="card-title">{{ product.prodName }}</h4>
-                </template>
-                <template #cardBody>
-                    <img :src="product.image" :alt="product.prodName" style="width: 200px; height: 200px;">  
+        <div class="row d-block d-md-flex gap-4 justify-content-center align-items-center" id="single">
+            <div class="row" v-if="product">
+                <div class="col me-auto m-5">
+                    <img :src="product.image" :alt="product.prodName" style="width: 20rem; height: 20rem; border-radius: 3px;">
+                </div>
+                <div class="col">
                     <br><br>
-                    <p>{{ product.description }}</p> 
-                </template>
-                <template #cardFooter>
-                    <p class="card-text lead">
-                        R{{ product.price }}
-                    </p>
+                    <h4 style="text-transform: capitalize;">{{ product.prodName }}</h4>
+                    <br><br>
+                    <p style="text-transform: capitalize;">{{ product.description }}</p>
+                    <br><br>
+                    <p class="lead fw-bold fs-5">R{{ product.price }}</p>
+                    <br><br>
                     <i>Size made to order</i>
-                </template>
-            </Card>
-            <div class="row" v-else>
-                <SpinnerComp></SpinnerComp>
+                </div>
             </div>
         </div>
     </div>
@@ -55,5 +51,9 @@ import SpinnerComp from '@/components/SpinnerComp.vue';
         /* margin: 30px; */
         
     }
-
+#single{
+    border: 1px solid white ;
+    border-radius: 3px;
+    width: 50rem;
+}
 </style>

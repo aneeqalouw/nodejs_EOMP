@@ -49,7 +49,7 @@
               {{ user.userRole }}
             </td>
             <td class="d-flex justify-content-between">
-              <UpdateUser :user="user"/>
+              <UpdateUser updateUserModal="updateUserModalTarget" />
               <button class="btn" @click="deleteUser(user.userID)">
                 <svg
                   width="20"
@@ -81,7 +81,7 @@
       <div class="col">
         <button class="btn btn-dark bg-transparent w-25 my-2" data-bs-toggle="modal"
           data-bs-target="#addProductModelTarget">Add</button>
-        <AddProduct :product="product" addProductModel="addProductModelTarget" />
+          <AddProduct addProductModel="addProductModelTarget" />
       </div>
     </div>
     <div class="row table-responsive">
@@ -93,6 +93,7 @@
             <th>Product Category</th>
             <th>Product Image</th>
             <th>Product Price</th>
+            <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -108,11 +109,12 @@
               {{ product.category }}
             </td>
             <td>
-              {{ product.image }}
+              <img :src="product.image" :alt="product.prodName" style="width: 30px; height: 30px;">
             </td>
             <td>R {{ product.price }}</td>
+            <td>{{ product.description }}</td>
             <td class="d-flex justify-content-between">
-              <UpdateProduct :product="product"/>
+              <UpdateProduct updateProductModal="updateProductModalTarget" />
               <button class="btn" @click="deleteProduct(product.prodID)">
                 <svg
                   width="20"
@@ -173,10 +175,9 @@ export default {
         userID : user.userID,
         firstName: user.firstName,
         lastName: user.lastName,
-        userAge: user.userAge,
-        userSex: user.userSex,
-        emailAdd: user.emailAdd,
-        userPwd: user.userPwd,
+        age: user.age,
+        email: user.email,
+        password: user.password,
         userRole: user.userRole
       }
       this.$store.dispatch('updateUser', {id: user.userID, data: updatingUser})
@@ -191,7 +192,8 @@ export default {
         prodName: product.prodName,
         category: product.category,
         image: product.image,
-        price: product.price
+        price: product.price,
+        description: product.description
       }
       this.$store.dispatch('updateProduct', {id: product.prodID, data: updatingProduct})
     }

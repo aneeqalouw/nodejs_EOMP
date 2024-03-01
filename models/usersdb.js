@@ -29,34 +29,64 @@ class Users{
             })
         })
     }
-    async createUser(req,res){
-        let data = req.body
-        data.password = await hash(data?.password, 8)
-        let user = {
-            email: data.email,
-            password: data.password
-        }
-        const qry = `
-            INSERT INTO users
-            SET ?;
-        `
-        db.query(qry, [data], (err)=>{
-            if(err){
-                res.json({
-                    status: res.statusCode,
-                    msg: 'Email address already in use'
-                })
-                console.log(err);
-            }else{
-                let token = createToken(user)
-                res.json({
-                    status: res.statusCode,
-                    token,
-                    msg: 'Successfully signed up!'
-                })
-            }
-        })
-    }
+
+
+
+    async register(req, res) {
+        const data = req.body;
+
+        data.password = await hash(data.password, 8);
+        
+        const user = {
+          email: data.email,
+          password: data.password
+        };
+        //query
+        const query = `
+          INSERT INTO users
+          SET ?; 
+          `;
+        db.query(query, [data], (err) => {
+          if (err) throw err;
+          //create a token
+          let token = createToken(user);
+          res.json({
+            status: res.statusCode,
+            msg: "You are now registered.",
+          });
+        });
+      }
+
+
+
+    // async createUser(req,res){
+    //     let data = req.body
+    //     data.password = await hash(data?.password, 8)
+    //     let user = {
+    //         email: data.email,
+    //         password: data.password
+    //     }
+    //     const qry = `
+    //         INSERT INTO users
+    //         SET ?;
+    //     `
+    //     db.query(qry, [data], (err)=>{
+    //         if(err){
+    //             res.json({
+    //                 status: res.statusCode,
+    //                 msg: 'Email address already in use'
+    //             })
+    //             console.log(err);
+    //         }else{
+    //             let token = createToken(user)
+    //             res.json({
+    //                 status: res.statusCode,
+    //                 token,
+    //                 msg: 'Successfully signed up!'
+    //             })
+    //         }
+    //     })
+    // }
     async updateUser(req, res){
         let data = req.body
         if(data?.password){

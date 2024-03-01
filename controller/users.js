@@ -19,15 +19,20 @@ usersRouter.get('/', (req, res)=>{
 })
 
 
-usersRouter.post('/register', bodyParser.json(), (req, res)=>{
-    try{
-        users.createUser(req, res)
-    }catch(e){
-        res.json({
-            status: res.statusCode,
-            msg: 'There was an error signing up'
-        })
-    }
+// usersRouter.post('/register', bodyParser.json(), (req, res)=>{
+//     try{
+//         users.createUser(req, res)
+//     }catch(e){
+//         res.json({
+//             status: res.statusCode,
+//             msg: 'There was an error signing up'
+//         })
+//     }
+// })
+
+usersRouter.post('/register',bodyParser.json(),
+(req, res)=>{
+    users.register(req, res)
 })
 
 usersRouter.patch('/update/:id', bodyParser.json(), (req, res)=>{

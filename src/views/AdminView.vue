@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col">
         <button
-          class="btn btn-dark bg-transparent w-25 my-2"
+          class="btn btn-dark bg-transparent w-25 my-2 border-light"
           data-bs-toggle="modal"
           data-bs-target="#addUserModelTarget"
         >
@@ -79,7 +79,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <button class="btn btn-dark bg-transparent w-25 my-2" data-bs-toggle="modal"
+        <button class="btn btn-dark bg-transparent w-25 my-2 border-light" data-bs-toggle="modal"
           data-bs-target="#addProductModelTarget">Add</button>
           <AddProduct addProductModel="addProductModelTarget" />
       </div>
@@ -115,7 +115,7 @@
             <td>{{ product.description }}</td>
             <td class="d-flex justify-content-between">
               <UpdateProduct updateProductModal="updateProductModalTarget" />
-              <button class="btn" @click="deleteProduct(product.prodID)">
+              <button class="btn" @click="deletingProduct(product)">
                 <svg
                   width="20"
                   height="20"
@@ -183,8 +183,8 @@ export default {
       this.$store.dispatch('updateUser', {id: user.userID, data: updatingUser})
     },
     //product methods
-    deleteProduct(prodID){
-      this.$store.dispatch('deleteProduct', {id: prodID})
+    deletingProduct(payload){
+      this.$store.dispatch('deleteProduct', payload)
     },
     UpdateProduct(product){
       let updatingProduct = {

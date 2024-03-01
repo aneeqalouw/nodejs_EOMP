@@ -5,7 +5,7 @@ import { useCookies } from 'vue3-cookies'
 const {cookies} = useCookies()
 import router from '@/router'
 import AuthenticateUser from '@/service/AuthenticateUser'
-const dbURL = 'https://nodejs-eomp-1.onrender.com/'
+const dbURL = 'https://nodejs-eomp-kcry.onrender.com/'
 
 
 export default createStore({
@@ -96,20 +96,20 @@ export default createStore({
     },
     async updateUser(context, payload) {
       try{
-        let {msg} = await axios.patch(`${dbURL}users/update/${payload.id}`)
-        if(msg) {
+        console.log(payload.prodID);
+        let {msg} = (await axios.patch(`${dbURL}users/update/${payload.userID}`, payload)).data
           context.dispatch('fetchUsers')
           sweet({
-            title: 'Update user',
+            title: 'Update User',
             text: msg,
             icon: "success",
             timer: 2000
           }) 
-        }
+        
       }catch(e) {
         sweet({
           title: 'Error',
-          text: 'An error occurred when updating a user.',
+          text: 'Failed to update user',
           icon: "error",
           timer: 2000
         }) 
@@ -214,12 +214,11 @@ export default createStore({
         }) 
       }
     },
-    async addProduct(){
+    async addProduct(context, payload){
       try{
-        let{result} = (await axios.post(`${dbURL}shop/addProduct`)).data
-        if(result){
-          context.commit('fetchProducts', result)
-        }else{
+        let{msg} = (await axios.post(`${dbURL}shop/addProduct`, payload)).data
+     
+          context.dispatch('fetchProducts')
           sweet({
             title: 'Add product',
             text: msg,
@@ -227,7 +226,6 @@ export default createStore({
             timer: 2000
 
           })
-        }
       }catch(e) {
         sweet({
           title: 'Error',
@@ -239,8 +237,10 @@ export default createStore({
     },
     async updateProduct(context, payload) {
       try{
-        let {msg} = await axios.patch(`${dbURL}shop/updateProduct/${payload.id}`)
-        if(msg) {
+        console.log(payload.prodID);
+        let {msg} = (await axios.patch(`${dbURL}shop/updateProduct/${payload.prodID}`, payload)).data
+        console.log(payload, msg);
+      
           context.dispatch('fetchProducts')
           sweet({
             title: 'Update product',
@@ -248,7 +248,7 @@ export default createStore({
             icon: "success",
             timer: 2000
           }) 
-        }
+        
       }catch(e) {
         sweet({
           title: 'Error',
@@ -260,8 +260,8 @@ export default createStore({
     },
     async deleteProduct(context, payload) {
       try{
-        let {msg} = await axios.delete(`${dbURL}shop/delete/${payload.id}`)
-        if(msg) {
+        let {msg} = (await axios.delete(`${dbURL}shop/delete/${payload.prodID}`)).data
+        console.log(msg);
           context.dispatch('fetchProducts')
           sweet({
             title: 'Delete product',
@@ -269,7 +269,6 @@ export default createStore({
             icon: "success",
             timer: 2000
           }) 
-        }
       }catch(e) {
         sweet({
           title: 'Error',

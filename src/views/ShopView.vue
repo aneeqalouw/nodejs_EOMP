@@ -4,14 +4,37 @@
     <br /><br />
     <div class="row">
       <div class="input-group">
+        <button
+          class="btn btn-black bg-transparent text-white border-light"
+          type="button"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M9.16669 14.1666C11.9281 14.1666 14.1667 11.928 14.1667 9.16663C14.1667 6.4052 11.9281 4.16663 9.16669 4.16663C6.40526 4.16663 4.16669 6.4052 4.16669 9.16663C4.16669 11.928 6.40526 14.1666 9.16669 14.1666Z"
+              stroke="#F8F8F8"
+              stroke-width="0.833333"
+            />
+            <path
+              d="M16.6667 16.6666L14.1667 14.1666"
+              stroke="#F8F8F8"
+              stroke-width="0.833333"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
         <input
           type="text"
           class="form-control bg-transparent text-white"
           placeholder="Search..."
-          aria-label="Recipient's username with two button
-        addons"
-          @keyup="search"
+          aria-label="Search"
           id="searchInput"
+          style="border-radius: 3px"
         />
         <div class="dropdown d-flex">
           <button
@@ -20,13 +43,14 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Sort by
+            Sort by price
             <svg
               width="20"
               height="20"
               viewBox="0 0 20 20"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              class="mx-2"
             >
               <path
                 d="M2.5 10.8333H12.5V9.16667H2.5M2.5 5V6.66667H17.5V5M2.5 15H7.5V13.3333H2.5V15Z"
@@ -37,22 +61,12 @@
           <ul class="dropdown-menu">
             <li>
               <a class="dropdown-item" href="#" @click="sortingLow"
-                >Price(Lowest to Highest)</a
+                >Lowest to Highest</a
               >
             </li>
             <li>
               <a class="dropdown-item" href="#" @click="sortingHigh"
-                >Price(Highest to lowest)</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="#" @click="sortingUnitards"
-                >Category(Unitards)</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="#" @click="sortingTnL"
-                >Category(Tops & Leggings)</a
+                >Highest to lowest</a
               >
             </li>
           </ul>
@@ -73,10 +87,11 @@
           <img
             :src="product.image"
             :alt="product.prodName"
-            style="width: 200px; height: 200px"
+            style="width: 200px; height: 200px; mix"
           />
         </template>
         <template #cardFooter>
+          
           <p class="card-text lead">R{{ product.price }}</p>
           <button type="button" class="btn btn-dark">
             <router-link
@@ -85,7 +100,6 @@
               >View Details</router-link
             >
           </button>
-
           <br /><br />
         </template>
       </Card>
@@ -112,16 +126,6 @@ export default {
     products() {
       return this.$store.state.products;
     },
-    sortingUnitards() {
-      if (this.products.category == "unitards") {
-        return this.products;
-      }
-    },
-    sortingTnL() {
-      if (this.products.category == "tops&leggings") {
-        console.log(products);
-      }
-    },
     sortingLow() {
       let sorted = this.products.sort((e1, e2) => {
         if (e1.price < e2.price) {
@@ -140,21 +144,14 @@ export default {
         } else return 0;
       });
     },
-    search() {
-      let searchInput = document.getElementById("searchInput");
-      let productContainer = document.getElementById("productsContainer");
-      let searchItem = this.products.filter((prod) => {
-        return prod.prodName
-          .toLowerCase()
-          .includes(searchInput.value.toLowerCase());
-      });
-      if (searchItem) {
-        productContainer.innerHTML = "";
-        searchItem.forEach((item) => {
-          productContainer.innerHTML += item;
-        });
-      }
-    },
+    // search() {
+    //   let searchInput = document.getElementById('searchInput')
+    //   let searchItem = this.products.filter((prod) => {
+    //     return prod.prodName
+    //       .toLowerCase()
+    //       .includes(this.searchInput.value.toLowerCase());
+    //   });
+    // },
   },
   mounted() {
     this.$store.dispatch("fetchProducts");
@@ -163,4 +160,4 @@ export default {
 </script>
 
 <style src="../assets/css/style.css"></style>
-<!--  -->
+

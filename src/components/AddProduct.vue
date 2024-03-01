@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-black">
-          <h1 class="modal-title fs-5" id="addProductr">Add product</h1>
+          <h1 class="modal-title fs-5" id="addProduct">Add product</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body bg-black text-white">
@@ -36,7 +36,7 @@
         </div>
         <div class="modal-footer bg-black">
           <button type="button" class="btn bg-transparent border-light text-white" data-bs-dismiss="modal">Close</button>
-          <button type="submit" @click.prevent="addProduct" class="btn btn-light">Save changes</button>
+          <button type="submit" @click.prevent="addingProduct" class="btn btn-light">Save changes</button>
         </div>
       </div>        
       </div>
@@ -59,7 +59,7 @@
               }
           },
           methods: {
-              addProduct(){
+            addingProduct(){
                   this.$store.dispatch('addProduct', this.payload)
               }
           }

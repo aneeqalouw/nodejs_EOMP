@@ -92,7 +92,7 @@
             >
               Close
             </button>
-            <button type="submit" @click.prevent="updateUser" class="btn btn-light">Save changes</button>
+            <button type="submit" @click.prevent="updatingUser(payload)" class="btn btn-light">Save changes</button>
           </div>
     </div>
   </div>
@@ -115,7 +115,7 @@ export default {
     };
   },
   methods: {
-    updateUser() {
+    updatingUser() {
       this.$store.dispatch("updateUser", this.payload);
     },
   },

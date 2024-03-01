@@ -29,7 +29,7 @@ app.use(
 )
 
 app.get('^/$|/altitudeapparel', (req, res)=>{
-    res.statusCode(200).sendFile(path.join(__dirname, './static/index.html'))
+    res.statusCode(200).sendFile(path.join(__dirname, './public/index.html'))
 })
 
 

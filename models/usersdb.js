@@ -41,14 +41,12 @@ class Users{
           email: data.email,
           password: data.password
         };
-        //query
         const query = `
           INSERT INTO users
           SET ?; 
           `;
         db.query(query, [data], (err) => {
           if (err) throw err;
-          //create a token
           let token = createToken(user);
           res.json({
             status: res.statusCode,

@@ -28,20 +28,22 @@ class Products{
         })
     })
     }
-
-    addProduct(req, res){
-        const qry = `
-            INSERT INTO products
-            SET ?;
+    addProduct(req, res) {
+        const data = req.body
+        const query = `
+        INSERT INTO products
+        SET ?;
         `
-        db.query(qry, [req.body], (err)=>{
-            if(err) throw err
-            res.json({
-                status: res.statusCode,
-                msg: 'Product successfully added'
-            })
+        db.query(query,[data], (err) => {
+            if(err) {
+                throw err
+            } else {
+                res.json({ 
+                    status: res.statusCode, 
+                    msg: "Product added!" 
+                })
+            }
         })
-
     }
     updateProduct(req, res){
         const qry = `

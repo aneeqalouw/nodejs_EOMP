@@ -34,27 +34,14 @@ class Products{
             INSERT INTO products
             SET ?;
         `
-        const addedProduct = req.body;
-        db.query(qry, addedProduct, (err)=>{
-        //     if(err) throw err
-        //     res.json({
-        //         status: res.statusCode,
-        //         msg: 'Product successfully added'
-        //     })
-        // }
-        if (err) {
-            console.error('Error adding product:', err);
-            res.status(500).json({
-                status: 500,
-                msg: 'Failed to add product'
-            });
-        } else {
+        db.query(qry, [req.body], (err)=>{
+            if(err) throw err
             res.json({
                 status: res.statusCode,
                 msg: 'Product successfully added'
-            });
-        }
-    });
+            })
+        })
+
     }
     updateProduct(req, res){
         const qry = `

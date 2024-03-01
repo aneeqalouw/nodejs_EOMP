@@ -31,7 +31,8 @@ class Products{
 
     addProduct(req, res){
         const qry = `
-            INSERT INTO products ?;
+            INSERT INTO products
+            SET?;
         `
         db.query(qry, [req.body], (err)=>{
             if(err) throw err

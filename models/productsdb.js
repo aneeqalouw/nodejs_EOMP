@@ -47,7 +47,7 @@ class Products{
         const qry = `
             UPDATE products
             SET ?
-            WHERE prodID = '${req.params.id}';
+            WHERE prodID = ${req.params.id};
         `
         db.query(qry, [req.body], (err)=>{
             if(err) throw err

@@ -20,12 +20,12 @@ const port = +process.env.PORT || 3500
 // })
 app.use(
     express.static('./public'),
+    cors(),
     express.json(),
     express.urlencoded({
         extended: true,
     }),
-    cookieparser(),
-    cors()
+    cookieparser()
 )
 
 app.get('^/$|/altitudeapparel', (req, res)=>{

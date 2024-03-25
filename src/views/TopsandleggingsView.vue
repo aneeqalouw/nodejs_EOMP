@@ -1,5 +1,5 @@
 <template>
-      <div class="container-fluid vh-100 my-3" style="background-color: black">
+  <div class="container-fluid vh-100 my-3" style="background-color: black">
     <div class="row">
       <div class="input-group">
         <input
@@ -8,7 +8,7 @@
           placeholder="Search..."
           aria-label="Recipient's username with two button addons"
         />
-        <button class="btn btn-outline-light d-flex gap-4" type="button">
+        <button class="btn btn-outline-light d-flex gap-4" type="button" @click="sorting">
           Sort by price
           <!-- icon -->
           <div>
@@ -32,9 +32,9 @@
       </div>
     </div>
     <br /><br />
-    <div class="row" v-if="product.category='tops and leggings'">
-      <Card v-for="product in products" :key="product.prodID">
-        <template #cardHeader>
+    <div class="row" v-if="tops&leggings?.length" >
+      <Card v-for="product in tops&leggings" :key="product.prodID" >
+        <template #cardHeader >
           <h4 class="card-title">{{ product.prodName }}</h4>
         </template>
         <template #cardBody>
@@ -50,16 +50,56 @@
         </template>
       </Card>
     </div>
-    <div class="row" v-else>
-      <SpinnerComp></SpinnerComp>
-    </div>
+
   </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+import Card from "@/components/CardComp.vue";
+import SpinnerComp from "@/components/SpinnerComp.vue";
+
+export default {
+  components: {
+    Card,
+    SpinnerComp,
+  },
+  computed: {
+    products() {
+      return this.$store.state.products;
+    },
+    unitards() {
+      return this.products?.filter(product=>product.category == 'tops&leggings')
+    },
+    sorting() {
+      let sorted = this.products.sort((e1, e2) => {
+        if (e1.price < e2.price) {
+          return -1;
+        } else if (e1.price > e2.price) {
+          return 1;
+        } else return 0;
+      });
+    },
+    search() {
+      let searchInput = document.getElementById("searchInput");
+      let productContainer = document.getElementById("productsContainer");
+      let searchItem = this.products.filter((prod) => {
+        return prod.prodName
+          .toLowerCase()
+          .includes(searchInput.value.toLowerCase());
+      });
+      if (searchItem) {
+        productContainer.innerHTML = "";
+        searchItem.forEach((item) => {
+          productContainer.innerHTML += item
+          
+        });
+      }
+    },
+  },
+  mounted() {
+    this.$store.dispatch("fetchProducts");
+  },
+};
 </script>
 
 <style scoped>

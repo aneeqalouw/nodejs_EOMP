@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <h2 class="display-4">Users</h2>
     </div>
     <div class="row">
       <div class="col">
         <button
-          class="btn btn-dark bg-transparent w-25 my-2"
+          class="btn btn-dark bg-transparent w-25 my-2 border-light"
           data-bs-toggle="modal"
           data-bs-target="#addUserModelTarget"
         >
@@ -15,15 +15,14 @@
         <AddUser addUserModel="addUserModelTarget" />
       </div>
     </div>
-    <div class="row">
-      <table class="table-bordered bg-transparent border-light text-white table-responsive">
+    <div class="row table-responsive">
+      <table class="table-bordered bg-transparent border-light text-white">
         <thead>
           <tr>
             <th>User ID</th>
             <th>First name</th>
             <th>Last name</th>
             <th>Age</th>
-            <th>Sex</th>
             <th>Email address</th>
             <th>User role</th>
             <th>Action</th>
@@ -50,7 +49,7 @@
               {{ user.userRole }}
             </td>
             <td class="d-flex justify-content-between">
-              <UpdateUser :user="user"/>
+              <UpdateUser updateUserModal="updateUserModalTarget" />
               <button class="btn" @click="deleteUser(user.userID)">
                 <svg
                   width="20"
@@ -68,6 +67,9 @@
             </td>
           </tr>
         </tbody>
+        <div class="row" v-else>
+          <SpinnerComp></SpinnerComp>
+        </div>
       </table>
     </div>
     <br /><br />
@@ -77,13 +79,13 @@
     </div>
     <div class="row">
       <div class="col">
-        <button class="btn btn-dark bg-transparent w-25 my-2" data-bs-toggle="modal"
+        <button class="btn btn-dark bg-transparent w-25 my-2 border-light" data-bs-toggle="modal"
           data-bs-target="#addProductModelTarget">Add</button>
-        <AddProduct :product="product" addProductModel="addProductModelTarget" />
+          <AddProduct addProductModel="addProductModelTarget" />
       </div>
     </div>
-    <div class="row">
-      <table class="table-bordered bg-transparent border-light text-white table-responsive">
+    <div class="row table-responsive">
+      <table class="table-bordered bg-transparent border-light text-white">
         <thead>
           <tr>
             <th>Product ID</th>
@@ -91,6 +93,7 @@
             <th>Product Category</th>
             <th>Product Image</th>
             <th>Product Price</th>
+            <th>Description</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -106,12 +109,13 @@
               {{ product.category }}
             </td>
             <td>
-              {{ product.image }}
+              <img :src="product.image" :alt="product.prodName" style="width: 30px; height: 30px;">
             </td>
             <td>R {{ product.price }}</td>
+            <td>{{ product.description }}</td>
             <td class="d-flex justify-content-between">
-              <UpdateProduct :product="product"/>
-              <button class="btn" @click="deleteProduct(product.prodID)">
+              <UpdateProduct updateProductModal="updateProductModalTarget" />
+              <button class="btn" @click="deletingProduct(product)">
                 <svg
                   width="20"
                   height="20"
@@ -128,6 +132,9 @@
             </td>
           </tr>
         </tbody>
+        <div class="row d-flex justify-content-center" v-else>
+          <SpinnerComp></SpinnerComp>
+        </div>
       </table>
     </div>
     <br><br>
@@ -140,13 +147,15 @@ import AddUser from "@/components/AddUser.vue";
 import AddProduct from "@/components/AddProduct.vue";
 import UpdateUser from "@/components/UpdateUser.vue";
 import UpdateProduct from "@/components/UpdateProduct.vue";
+import SpinnerComp from "@/components/SpinnerComp.vue";
 
 export default {
   components: {
     AddUser,
     AddProduct,
     UpdateUser,
-    UpdateProduct
+    UpdateProduct,
+    SpinnerComp
   },
   computed: {
     users() {
@@ -166,17 +175,16 @@ export default {
         userID : user.userID,
         firstName: user.firstName,
         lastName: user.lastName,
-        userAge: user.userAge,
-        userSex: user.userSex,
-        emailAdd: user.emailAdd,
-        userPwd: user.userPwd,
+        age: user.age,
+        email: user.email,
+        password: user.password,
         userRole: user.userRole
       }
       this.$store.dispatch('updateUser', {id: user.userID, data: updatingUser})
     },
     //product methods
-    deleteProduct(prodID){
-      this.$store.dispatch('deleteProduct', {id: prodID})
+    deletingProduct(payload){
+      this.$store.dispatch('deleteProduct', payload)
     },
     UpdateProduct(product){
       let updatingProduct = {
@@ -184,7 +192,8 @@ export default {
         prodName: product.prodName,
         category: product.category,
         image: product.image,
-        price: product.price
+        price: product.price,
+        description: product.description
       }
       this.$store.dispatch('updateProduct', {id: product.prodID, data: updatingProduct})
     }

@@ -1,10 +1,5 @@
 <template>
-  <button
-    type="button"
-    class="btn modalButton"
-    data-bs-toggle="modal"
-    data-bs-target="updateUserModel"
-  >
+  <button type="button" class="btn btn-black" data-bs-toggle="modal" data-bs-target="#updateUserModal">
     <svg
       width="22"
       height="20"
@@ -17,42 +12,28 @@
         fill="#F8F8F8"
       />
     </svg>
-  </button>
-  <div
-    class="modal fade"
-    :id="updateUserModel"
-    tabindex="-1"
-    aria-labelledby="updateUser"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header bg-dark">
-          <h1 class="modal-title fs-5" id="updateUser">Edit user</h1>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body bg-dark">
-          <div @submit.prevent="updateUser">
-            <div>
-              <input
-                type="text"
-                placeholder="userID"
-                v-model="payload.userID"
-                class="bg-transparent border-dark"
-              />
-            </div>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateUser" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h1 class="modal-title fs-5" id="updateUser">Edit user</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-black">
+        <div>
+          <div>
+            <input type="text" placeholder="ID" v-model="payload.userID" class="bg-transparent border-dark text-white">
+          </div>
             <br /><br />
             <div>
               <input
                 type="text"
                 placeholder="Name"
                 v-model="payload.firstName"
-                class="bg-transparent border-dark"
+                class="bg-transparent border-dark text-white"
               />
             </div>
             <br /><br />
@@ -61,7 +42,7 @@
                 type="text"
                 placeholder="Surname"
                 v-model="payload.lastName"
-                class="bg-transparent border-dark"
+                class="bg-transparent border-dark text-white"
               />
             </div>
             <br /><br />
@@ -69,8 +50,8 @@
               <input
                 type="text"
                 placeholder="Age"
-                v-model="payload.userAge"
-                class="bg-transparent border-dark"
+                v-model="payload.age"
+                class="bg-transparent border-dark text-white"
               />
             </div>
             <br /><br />
@@ -79,7 +60,7 @@
                 type="text"
                 placeholder="Role"
                 v-model="payload.userRole"
-                class="bg-transparent border-dark"
+                class="bg-transparent border-dark text-white"
               />
             </div>
             <br /><br />
@@ -88,7 +69,7 @@
                 type="text"
                 placeholder="Email"
                 v-model="payload.email"
-                class="bg-transparent border-dark"
+                class="bg-transparent border-dark text-white"
               />
             </div>
             <br /><br />
@@ -97,12 +78,13 @@
                 type="password"
                 placeholder="Password"
                 v-model="payload.password"
-                class="bg-transparent border-dark"
+                class="bg-transparent border-dark text-white"
               />
             </div>
             <br /><br />
           </div>
-          <div class="modal-footer">
+      </div>
+      <div class="modal-footer bg-black text-white">
             <button
               type="button"
               class="btn bg-transparent border-light text-white"
@@ -110,25 +92,22 @@
             >
               Close
             </button>
-            <button type="submit" class="btn btn-light">Save changes</button>
+            <button type="submit" @click.prevent="updatingUser(payload)" class="btn btn-light">Save changes</button>
           </div>
-        </div>
-      </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
 export default {
-  props: ["updateUserModel"],
+  props: ["updateUserModal"],
   data() {
     return {
       payload: {
         userID: null,
         firstName: "",
         lastName: "",
-        userRole: "",
-        sex: "",
         age: "",
         email: "",
         password: "",
@@ -136,7 +115,7 @@ export default {
     };
   },
   methods: {
-    updateUser() {
+    updatingUser() {
       this.$store.dispatch("updateUser", this.payload);
     },
   },

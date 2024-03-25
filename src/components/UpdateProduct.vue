@@ -1,10 +1,5 @@
 <template>
-    <button
-    type="button"
-    class="btn modalButton"
-    data-bs-toggle="modal"
-    data-bs-target="updateProductModel"
-  >
+  <button type="button" class="btn btn-black" data-bs-toggle="modal" data-bs-target="#updateProductModal">
     <svg
       width="22"
       height="20"
@@ -17,110 +12,111 @@
         fill="#F8F8F8"
       />
     </svg>
-  </button>
-    <div
-      class="modal fade"
-      :id="updateProductModel"
-      tabindex="-1"
-      aria-labelledby="updateProduct"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header bg-dark">
-            <h1 class="modal-title fs-5" id="updateProduct">Edit Product</h1>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProduct" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h1 class="modal-title fs-5" id="updateUser">Edit product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-black">
+        <div>
+            <br /><br />
+            <div>
+              <input
+                type="text"
+                placeholder="ID"
+                v-model="payload.prodID"
+                class="bg-transparent border-dark text-white"
+              />
+            </div>
+            <br /><br />
+            <div>
+              <input
+                type="text"
+                placeholder="Name"
+                v-model="payload.prodName"
+                class="bg-transparent border-dark text-white"
+              />
+            </div>
+            <br /><br />
+            <div>
+              <input
+                type="text"
+                placeholder="category"
+                v-model="payload.category"
+                class="bg-transparent border-dark text-white"
+              />
+            </div>
+            <br /><br />
+            <div>
+              <input
+                type="text"
+                placeholder="Image link"
+                v-model="payload.image"
+                class="bg-transparent border-dark text-white"
+              />
+            </div>
+            <br /><br />
+            <div>
+              <input
+                type="text"
+                placeholder="Price"
+                v-model="payload.price"
+                class="bg-transparent border-dark text-white"
+              />
+            </div>
+            <div>
+              <br><br>
+              <input
+                type="text"
+                placeholder="Description"
+                v-model="payload.description"
+                class="bg-transparent border-dark text-white"
+              />
+            </div>
+            <br /><br />
+          </div>
+      </div>
+      <div class="modal-footer bg-black text-white">
             <button
               type="button"
-              class="btn-close"
+              class="btn bg-transparent border-light text-white"
               data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            >
+              Close
+            </button>
+            <button type="submit" @click.prevent="updatingProduct(payload)" class="btn btn-light">Save changes</button>
           </div>
-          <div class="modal-body bg-dark">
-            <div @submit.prevent="updateProduct">
-              <div>
-                <input
-                  type="text"
-                  placeholder="prodID"
-                  v-model="payload.prodID"
-                  class="bg-transparent border-dark"
-                />
-              </div>
-              <br /><br />
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  v-model="payload.prodName"
-                  class="bg-transparent border-dark"
-                />
-              </div>
-              <br /><br />
-              <div>
-                <input
-                  type="text"
-                  placeholder="image"
-                  v-model="payload.image"
-                  class="bg-transparent border-dark"
-                />
-              </div>
-              <br /><br />
-              <div>
-                <input
-                  type="text"
-                  placeholder="category"
-                  v-model="payload.category"
-                  class="bg-transparent border-dark"
-                />
-              </div>
-              <br /><br />
-              <div>
-                <input
-                  type="text"
-                  placeholder="price"
-                  v-model="payload.price"
-                  class="bg-transparent border-dark"
-                />
-              </div>
-              <br /><br />
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn bg-transparent border-light text-white"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="submit" class="btn btn-light">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    props: ["updateProductModel"],
-    data() {
-      return {
-        payload: {
-          prodID: "",
-          prodName: "",
-          category: "",
-          image: "",
-          price: ""
-        },
-      };
-    },
-    methods: {
-      updateProduct() {
-        this.$store.dispatch("updateProduct", this.payload);
+  </div>
+</div>
+</template>
+
+<script>
+export default {
+  props: ["updateProductModal"],
+  data() {
+    return {
+      payload: {
+        prodID: "",
+        prodName: "",
+        category: "",
+        image: "",
+        price: "",
+        description: ""
       },
+    };
+  },
+  methods: {
+    updatingProduct() {
+      this.$store.dispatch("updateProduct", this.payload);
     },
-  };
-  </script>
-  
-  <style scoped></style>
-  
+  },
+};
+</script>
+
+<style scoped></style>
